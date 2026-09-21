@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="java.util.List" %>
+<%@ page import="br.com.transfermarkt.model.Jogador" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +12,6 @@
         th { background-color: #f4f4f4; }
         a { text-decoration: none; padding: 5px 10px; border-radius: 4px; color: white; }
         .btn-cadastrar { background-color: #28a745; display: inline-block; margin-bottom: 15px; }
-        .btn-editar { background-color: #ffc107; color: black; }
         .btn-excluir { background-color: #dc3545; }
     </style>
 </head>
@@ -28,7 +29,25 @@
             <th>Camisa</th>
             <th>Ações</th>
         </tr>
-        <!-- Aqui os dados serão preenchidos via Controller/Servlet -->
+        <%
+            List<Jogador> jogadores = (List<Jogador>) request.getAttribute("jogadores");
+            if (jogadores != null) {
+                for (Jogador j : jogadores) {
+        %>
+        <tr>
+            <td><%= j.getId() %></td>
+            <td><%= j.getNome() %></td>
+            <td><%= j.getClube() %></td>
+            <td><%= j.getPosicao() %></td>
+            <td><%= j.getNumeroCamisa() %></td>
+            <td>
+                <a href="excluirJogador?id=<%= j.getId() %>" class="btn-excluir" onclick="return confirm('Deseja realmente excluir?')">Excluir</a>
+            </td>
+        </tr>
+        <%
+                }
+            }
+        %>
     </table>
 </body>
 </html>
