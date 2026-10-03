@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 package br.com.transfermarket.controller;
+=======
+package br.com.transfermarkt.controller;
+>>>>>>> branch_controller
 
 import br.com.transfermarket.dao.JogadorDAO;
 import br.com.transfermarket.model.Jogador;
