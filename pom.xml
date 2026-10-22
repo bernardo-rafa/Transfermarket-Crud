@@ -9,6 +9,13 @@
   <url>http://maven.apache.org</url>
   <dependencies>
     <dependency>
+      <groupId>jakarta.platform</groupId>
+      <artifactId>jakarta.jakartaee-web-api</artifactId>
+      <version>10.0.0</version>
+      <scope>provided</scope>
+    </dependency><![CDATA[
+
+    ]]><dependency>
       <groupId>org.postgresql</groupId>
       <artifactId>postgresql</artifactId>
       <version>42.7.2</version>
@@ -27,5 +34,20 @@
   </dependencies>
   <build>
     <finalName>Transfermarket-Crud</finalName>
+
+    <plugins>
+      <!-- Plugin do Tomcat para rodar o projeto Web sem instalar o Tomcat no PC -->
+      <plugin>
+        <groupId>org.apache.tomcat.maven</groupId>
+        <artifactId>tomcat7-maven-plugin</artifactId>
+        <version>2.2</version>
+        <configuration>
+          <port>8080</port>
+          <path>/</path>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
+
+
 </project>

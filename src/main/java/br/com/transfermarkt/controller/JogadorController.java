@@ -1,8 +1,7 @@
-<<<<<<< HEAD
-package br.com.transfermarket.controller;
-=======
+
+
 package br.com.transfermarkt.controller;
->>>>>>> branch_controller
+
 
 import br.com.transfermarket.dao.JogadorDAO;
 import br.com.transfermarket.model.Jogador;
@@ -62,11 +61,12 @@ public class JogadorController extends HttpServlet {
         String idStr = request.getParameter("id");
         if (idStr == null || idStr.isEmpty()) {
             dao.cadastrar(jogador);
+            response.sendRedirect("listarJogadores");
         } else {
             jogador.setId(Long.parseLong(idStr));
             dao.alterar(jogador);
+            response.sendRedirect("listarJogadores");
         }
 
-        response.sendRedirect("listarJogadores");
     }
 }
